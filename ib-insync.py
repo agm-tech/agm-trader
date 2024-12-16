@@ -8,21 +8,7 @@ if ib.isConnected():
 else:
     raise Exception('Not connected')
 
-contract = Stock('TSLA', 'SMART', 'USD')
+account_pnl = ib.requestPnL()
+logger.info(account_pnl)
 
-dt = ''
-barsList = []
-while True:
-    bars = ib.reqHistoricalData(
-        contract,
-        endDateTime=dt,
-        durationStr='10 D',
-        barSizeSetting='1 hour',
-        whatToShow='MIDPOINT',
-        useRTH=True,
-        formatDate=1)
-    if not bars:
-        break
-    barsList.append(bars)
-    dt = bars[0].date
-    logger.info(dt)
+ib.disconnect()
