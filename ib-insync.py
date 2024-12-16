@@ -9,7 +9,8 @@ else:
     logger.error('Not connected')
     raise Exception('Not connected')
 
-account_positions = ib.positions(account='U14313113')
-logger.info(account_positions)
+bond = Bond(secIdType='ISIN', secId='US620076AM16')
+details = ib.reqContractDetails(bond)
+logger.info(details)
 
 ib.disconnect()
