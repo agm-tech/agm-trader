@@ -8,8 +8,21 @@ if ib.isConnected():
 else:
     raise Exception('Not connected')
 
-bond = Bond(secIdType='ISIN', secId='US620076AM16')
-details = ib.reqContractDetails(bond)
-logger.info(details)
+contract = Stock('TSLA', 'SMART', 'USD')
 
-ib.disconnect()
+dt = ''
+barsList = []
+while True:
+    bars = ib.reqHistoricalData(
+        contract,
+        endDateTime=dt,
+        durationStr='10 D',
+        barSizeSetting='1 min',
+        whatToShow='MIDPOINT',
+        useRTH=True,
+        formatDate=1)
+    if not bars:
+        break
+    barsList.append(bars)
+    dt = bars[0].date
+    print(dt)
