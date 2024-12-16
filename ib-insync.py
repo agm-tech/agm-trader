@@ -17,7 +17,7 @@ while True:
         contract,
         endDateTime=dt,
         durationStr='10 D',
-        barSizeSetting='1 min',
+        barSizeSetting='1 hour',
         whatToShow='MIDPOINT',
         useRTH=True,
         formatDate=1)
