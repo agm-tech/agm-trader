@@ -28,8 +28,10 @@ bonds = []
 for isin in isin_codes[0:5]:
     bond = Bond(secIdType='ISIN', secId=isin)
     details = ib.reqContractDetails(bond)
-    bonds.append(details)
+    for d in details:
+        logger.info(d.descAppend)
+        bonds.append(d)
 
-logger.info(bonds[0])
+logger.info(bonds)
 
 ib.disconnect()
