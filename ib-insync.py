@@ -18,7 +18,7 @@ isin_codes = df['ISIN'].str.strip().tolist()
 ib = IB()
 
 try:
-    ib.connect('172.17.0.1', 4001, clientId=1)
+    ib.connect('127.0.0.1', 4001, clientId=1)
 except Exception as e:
     logger.error(f"Error connecting to IB: {str(e)}")
     raise Exception(f"Error connecting to IB: {str(e)}")
