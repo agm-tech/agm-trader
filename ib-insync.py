@@ -7,9 +7,8 @@ if ib.isConnected():
 else:
     raise Exception('Not connected')
 
-amd = Stock('AMD')
-details = ib.reqContractDetails(amd)
-contracts = [cd.contract for cd in details]
-print(contracts)
+bond = Bond(secIdType='ISIN', secId='US620076AM16')
+details = ib.reqContractDetails(bond)
+print(details)
 
 ib.disconnect()
