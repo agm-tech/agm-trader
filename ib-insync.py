@@ -11,5 +11,5 @@ else:
     raise Exception('Not connected')
 
 
-response = access_api('/drive/download_file', method='POST', data={'file_id': '1_dvlQLjb5kAw45mMNO0PrugOoohcgF_G'})
+response = access_api('/drive/download_file', method='POST', data={'file_id': '1_dvlQLjb5kAw45mMNO0PrugOoohcgF_G', 'mime_type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'})
 logger.info(response)

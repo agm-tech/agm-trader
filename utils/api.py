@@ -7,7 +7,6 @@ def access_api(endpoint, method='GET', data=None):
     try:
         
         # Add timeout to prevent hanging
-        print(url + '/login')
         auth = requests.post(
             url + '/login', 
             json={'username': 'admin', 'password': 'password'},
