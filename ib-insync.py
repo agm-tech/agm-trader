@@ -23,11 +23,10 @@ except Exception as e:
     logger.error(f"Error connecting to IB: {str(e)}")
     raise Exception(f"Error connecting to IB: {str(e)}")
 
-    
 bonds = []
 logger.info(f'Found a total of {len(isin_codes)} bonds in the database, fetching details...')
 
-for isin in isin_codes:
+for isin in isin_codes[0:5]:
     bond = Bond(secIdType='ISIN', secId=isin)
     details = ib.reqContractDetails(bond)
     for d in details:
