@@ -8,7 +8,7 @@ if ib.isConnected():
 else:
     raise Exception('Not connected')
 
-account_pnl = ib.requestPnL()
+account_pnl = ib.pnl()
 logger.info(account_pnl)
 
 ib.disconnect()
