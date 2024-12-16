@@ -8,7 +8,7 @@ if ib.isConnected():
 else:
     raise Exception('Not connected')
 
-account_pnl = ib.pnl(account='U14313113')
-logger.info(account_pnl)
+account_positions = ib.positions(account='U14313113')
+logger.info(account_positions)
 
 ib.disconnect()
