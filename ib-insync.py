@@ -14,7 +14,6 @@ except Exception as e:
     raise Exception(f"Error parsing Excel file: {str(e)}")
 
 isin_codes = df['ISIN'].str.strip().tolist()
-logger.info(isin_codes)
 
 ib = IB()
 
@@ -31,6 +30,6 @@ for isin in isin_codes[0:5]:
     details = ib.reqContractDetails(bond)
     bonds.append(details)
 
-logger.info(bonds)
+logger.info(bonds[0])
 
 ib.disconnect()
