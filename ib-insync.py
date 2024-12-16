@@ -4,8 +4,9 @@ from utils.logger import logger
 ib = IB()
 ib.connect('127.0.0.1', 4001, clientId=1)
 if ib.isConnected():
-    print('Connected')
+    logger.info('Connected')
 else:
+    logger.error('Not connected')
     raise Exception('Not connected')
 
 account_positions = ib.positions(account='U14313113')
