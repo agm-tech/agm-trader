@@ -30,12 +30,10 @@ response = access_api('/drive/download_file', method='POST', data={'file_id': '1
 try:
     excel_data = io.BytesIO(response)
     df = pd.read_excel(excel_data)
-    
-    logger.info(f"Successfully loaded data into DataFrame with shape {df.shape}")
+    logger.info(df.head())
 except Exception as e:
     logger.error(f"Error parsing Excel file: {str(e)}")
-    raise
-
+    raise Exception(f"Error parsing Excel file: {str(e)}")
 
 """
 bond = Bond(secIdType='ISIN', secId='US620076AM16')
