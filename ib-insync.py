@@ -25,4 +25,4 @@ while True:
         break
     barsList.append(bars)
     dt = bars[0].date
-    print(dt)
+    logger.info(dt)
