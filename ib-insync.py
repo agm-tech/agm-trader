@@ -9,11 +9,12 @@ response = access_api('/drive/download_file', method='POST', data={'file_id': '1
 try:
     csv_data = io.BytesIO(response)
     df = pd.read_csv(csv_data)
-    logger.info(df.head())
 except Exception as e:
     logger.error(f"Error parsing Excel file: {str(e)}")
     raise Exception(f"Error parsing Excel file: {str(e)}")
 
+isin_codes = df['ISIN'].str.strip().tolist()
+logger.info(isin_codes)
 
 ib = IB()
 ib.connect('127.0.0.1', 4001, clientId=1)
