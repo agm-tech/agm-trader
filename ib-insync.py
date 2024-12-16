@@ -32,6 +32,4 @@ for isin in isin_codes[0:5]:
         logger.info(d.descAppend)
         bonds.append(d)
 
-logger.info(bonds)
-
 ib.disconnect()
