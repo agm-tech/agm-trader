@@ -17,17 +17,20 @@ isin_codes = df['ISIN'].str.strip().tolist()
 logger.info(isin_codes)
 
 ib = IB()
-ib.connect('127.0.0.1', 4001, clientId=1)
-if ib.isConnected():
-    logger.info('Connected')
-else:
-    logger.error('Not connected')
-    raise Exception('Not connected')
 
-"""
-bond = Bond(secIdType='ISIN', secId='US620076AM16')
-details = ib.reqContractDetails(bond)
-logger.info(details)
-"""
+try:
+    ib.connect('127.0.0.1', 4001, clientId=1)
+except Exception as e:
+    logger.error(f"Error connecting to IB: {str(e)}")
+    raise Exception(f"Error connecting to IB: {str(e)}")
+
+    
+bonds = []
+for isin in isin_codes[0:5]:
+    bond = Bond(secIdType='ISIN', secId=isin)
+    details = ib.reqContractDetails(bond)
+    bonds.append(details)
+
+logger.info(bonds)
 
 ib.disconnect()
